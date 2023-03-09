@@ -7,12 +7,27 @@
     <link href="~/lib/css/bootstrap-grid.min.css" rel="stylesheet" />
 </head>
 <body>
+
+
     <!--Creating the NavBar that will be passed to the Views-->
     <div class="bg-black text-white p-2">
-        <span class="navbar-brand ml-2">Trey's Bookstore</span>
+        <h1> <span class="navbar-brand ml-2">Bookstore <small class="text-decoration-underline">By: Trey Jackson</small></span></h1>
     </div>
-        <div class="col-9">
-            @RenderBody()
+
+    <div class="row m-1 p-1">
+
+        <div id="types" class="col-3">
+            <vc:types></vc:types>
         </div>
+
+        <div class="col-9">
+            <div>
+                @RenderBody()
+            </div>
+            
+        </div>
+    </div>
+
+
 </body>
 </html>

@@ -17,20 +17,23 @@ namespace Bookstore_rtj34.Controllers
             repo = br;
         }
 
-        public IActionResult Index(int pageNum = 1)
+        public IActionResult Index(string bookCat, int pageNum = 1)
         {
             int pageResults = 10;
 
             var x = new BooksViewModel
             {
                 Books = repo.Books
+                .Where(b => b.Category == bookCat || bookCat == null)
                .OrderBy(b => b.Title)
                .Skip((pageNum - 1) * pageResults)
                .Take(pageResults),
 
                 PageInfo = new PageInfo
                 {
-                    BookTotal = repo.Books.Count(),
+                    BookTotal = (bookCat == null
+                    ? repo.Books.Count()
+                    : repo.Books.Where(x => x.Category == bookCat).Count()),
                     BooksPerPage = pageResults,
                     CurrentPage = pageNum
 
