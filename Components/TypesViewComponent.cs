@@ -7,6 +7,7 @@ using Bookstore_rtj34.Models;
 
 namespace Bookstore_rtj34.Components
 {
+//This ViewComponent allows for the view of the books to be fitlered by category, passed to _Layout page
     public class TypesViewComponent : ViewComponent
     {
         private IBookstoreRepository repo { get; set; }

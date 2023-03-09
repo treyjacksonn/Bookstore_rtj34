@@ -11,6 +11,9 @@
 <!--Function to display the "Books" information passed in through the model-->
 @foreach (Book b in Model.Books)
 {
+    //partial view through the ProjectSummary file
+    //the ProjectSummary file holds all the code that appears on the cite
+    // it is brought to this page through the model 
 
     <partial name="ProjectSummary"  model="b"/>
 }

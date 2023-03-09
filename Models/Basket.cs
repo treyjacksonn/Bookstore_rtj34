@@ -9,6 +9,7 @@ namespace Bookstore_rtj34.Models
     {
         public List<CartLineItem> Items { get; set; } = new List<CartLineItem>();
 
+        //Function to add item, uses BookId to know what book the user selected
         public void AddItem(Book book, int qty)
         {
             CartLineItem line = Items
@@ -17,6 +18,7 @@ namespace Bookstore_rtj34.Models
 
             if (line == null)
             {
+                //adds the info needed to display the basekt/cart
                 Items.Add(new CartLineItem
                 {
                     Book = book,
@@ -26,9 +28,12 @@ namespace Bookstore_rtj34.Models
             }
             else
             {
+                //adding additional copy of the same book
                 line.Quantity += qty;
             }
         }
+
+        //used to calculate the total of the basekt/cart
         public double CalculateTotal()
         {
             double sum = Items.Sum(x => x.Quantity * x.Book.Price);
@@ -38,7 +43,7 @@ namespace Bookstore_rtj34.Models
         }
     }
 
-
+    //Defines variables to hold the info for the cart
     public class CartLineItem
     {
         public int LineID { get; set; }

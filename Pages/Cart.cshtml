@@ -5,6 +5,7 @@
 
 <h1>Cart</h1>
 
+<!--Outlines table columns-->
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
@@ -19,6 +20,8 @@
         @foreach(var i in Model.basket.Items) 
         { 
             <tr>
+                <!--Accessing the info from the user book selection that is stored in Basket.cs
+                    Info is passed to this page through the variables Book and Items-->
                 <td>@i.Book.Title</td>
                 <td>@i.Quantity</td>
                 <td>@i.Book.Price</td>
@@ -30,12 +33,14 @@
 
     <tfoot>
         <tr>
+            <!---Calling the CalculateTotal to dynamically determine the total cost of the user's basket-->
             <td colspan="3">Total:</td>
             <td>@Model.basket.CalculateTotal().ToString("C")</td>
         </tr>
     </tfoot>
 </table>
 
+<!--Connected to the ReturnUrl Model which takes the user back to the page that they were on when they added the book-->
 <div>
     <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Shopping</a>
 </div>

@@ -6,7 +6,7 @@
 
 <div class="card card-outline-primary m-1 p-1">
 
-
+    <!--Displaying the info of the book selection choosen by the user-->
     <div class="bg-light p-1">
         <h4>
             @Model.Title
@@ -26,6 +26,7 @@
 
     </ul>
 
+    <!--post method to return what book the user selected-->
     <form method="post" asp-page="/Cart">
 
         <input type="hidden" asp-for="@Model.BookId" />

@@ -21,6 +21,7 @@ namespace Bookstore_rtj34.Controllers
         {
             int pageResults = 10;
 
+            //Funciton recieves variable bookCat to filter the category equal to bookCat, or the category choosen by the user
             var x = new BooksViewModel
             {
                 Books = repo.Books
@@ -31,6 +32,7 @@ namespace Bookstore_rtj34.Controllers
 
                 PageInfo = new PageInfo
                 {
+                    //fixing pagination for the selection of category
                     BookTotal = (bookCat == null
                     ? repo.Books.Count()
                     : repo.Books.Where(x => x.Category == bookCat).Count()),

@@ -53,6 +53,7 @@ namespace Bookstore_rtj34
 
             app.UseEndpoints(endpoints =>
             {
+                //different endpoints to make the URLs user-friendly, shows the category along with the corresponding page.
                 endpoints.MapControllerRoute(
                  name: "bookCat",
                  pattern: "{bookCat}/Page{pageNum}",
