@@ -27,6 +27,15 @@
                 <td>@i.Book.Price</td>
                 <td>@((i.Quantity * i.Book.Price).ToString("C"))</td>
 
+                <td class="text-center">
+                    <form method="post" asp-page-handler="Remove">
+                        <input type="hidden" name="bookId" value="@i.Book.BookId"/>
+                        <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                        <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                    </form>
+
+                </td>
+
             </tr>
         }
     </tbody>
@@ -43,5 +52,6 @@
 <!--Connected to the ReturnUrl Model which takes the user back to the page that they were on when they added the book-->
 <div>
     <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Shopping</a>
+    <a class="btn btn-primary" asp-controller="Checkout" asp-action="Checkout" >Checkout</a>
 </div>
 

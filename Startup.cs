@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Bookstore_rtj34.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Bookstore_rtj34
 {
@@ -32,11 +33,14 @@ namespace Bookstore_rtj34
             });
 
             services.AddScoped<IBookstoreRepository, EFBookstoreRepository>();
-
+            services.AddScoped<ICheckoutRepository, EFCheckoutRepository>();
             services.AddRazorPages();
 
             services.AddDistributedMemoryCache();
             services.AddSession();
+
+            services.AddScoped<Basket>(x => SessionBasket.GetBasket(x));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

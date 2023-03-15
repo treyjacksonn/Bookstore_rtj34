@@ -20,6 +20,7 @@ namespace Bookstore_rtj34.Models
         }
 
         public  DbSet<Book> Books { get; set; }
+        public DbSet<Checkout>Checkout{ get; set; }
 
     }
 }
